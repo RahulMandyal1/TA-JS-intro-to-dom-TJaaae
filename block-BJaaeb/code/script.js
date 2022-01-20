@@ -5,14 +5,28 @@ default value to be "text" and return the input element inside label. (create it
 
 */
 
-// Your code goes here
+function createInputElm(label , type="text"){
+   let newElement = document.createElement('label');
+   let inputBox  = document.createElement('input');
+   inputBox.type = type ;
+   newElement.innerText = label + ':';
+   newElement.append(inputBox);
+   return newElement;
+}
 
 // TEST
 createInputElm('Your name'); //<label>Your name: <input type="text"></label>
 createInputElm('Your age', 'number'); //<label>Your age: <input type="number"></label>
 
 // 2. Do the same thing as above using string literal like `<h1>Hello</h1>`
-
+function createInputElm(label , type=`text`){
+  let newElement = document.createElement(`label`);
+  let inputBox  = document.createElement(`input`);
+  inputBox.type = type ;
+  newElement.innerText = label + `:`;
+  newElement.append(inputBox);
+  return newElement;
+}
 // Your code goes here
 
 // TEST
@@ -27,6 +41,17 @@ createInputElm('Your age', 'number'); //<label>Your age: <input type="number"></
 createList(['ALABAMA', 'ALASKA', 'HAWAII', 'KENTUCKY']);
 createList(['Afghanistan', 'Antarctica', 'Congo', 'Estonia']);
 
+function createList(arr){
+  let ul  = document.createElement('ul');
+  let li ;
+  arr.forEach(ele=>{
+    li= document.createElement('li');
+    li.append(ele);
+    ul.append(li);
+  });
+  return ul;
+}
+
 // 4. Create a function named `createTodoList` that accept and array of data like [{name: "Learn DOM", isDone: false}, {name: "Learn JS", isDone: true}] and returns
 // the html for single todo will look like given below
 /* 
@@ -39,7 +64,28 @@ createList(['Afghanistan', 'Antarctica', 'Congo', 'Estonia']);
 </ul>
 */
 
-// Your code goes here
+function createTodoList(arr){
+
+  let ul  = document.createElement('ul');
+  let li = document.createElement('li');
+  let para = document.createElement('p');
+  let inputBox = document.createElement('input');
+  let span =document.createElement('span');
+  span.innerText ='X';
+  inputBox.type= "checkbox";
+  let pValue = "";
+
+  arr.forEach(ele=>{
+    pValue = ele.name;
+    para.innerHTML = pValue;
+    document.createElement('li');
+    ul.append(li);
+    li.append(para);
+    li.append(inputBox);
+    li.append(span);
+  });
+  return ul;
+}
 
 // TEST
 createTodoList([
